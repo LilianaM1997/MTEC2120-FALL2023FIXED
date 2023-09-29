@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - Destroy
+  - Bullet
+  - Balloon
   layers:
   - Default
   - TransparentFX
