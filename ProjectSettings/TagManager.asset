@@ -8,11 +8,12 @@ TagManager:
   - Destroy
   - Bullet
   - Balloon
+  - clickLayer
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - clickLayer
   - Water
   - UI
   - terrain layers
