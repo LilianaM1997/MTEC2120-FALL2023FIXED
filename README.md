@@ -2,11 +2,21 @@
 //Homework #1//
 ![alt text](Recordings\image_001_0000.jpg)
 
+//Homework #2//
+![alt text](Recordings\movie_005.mp4)
+*/ Note: I created the gun for the player and attach it so no matter what direction the gun will always aim where the player is facing. Also created a bullet prefab and made scripts called Gun and bullet respectively. */
+
 //Homework #3//
 ![alt text](Recordings\movie_001.mp4)
+*/ Note: Created a balloon using a sphere and cylinder. Then I created a script called BalloonFloat and typed the value in code and the speed to make the balloon float. PopBallon script was made where if the bullet touches the balloon then it would destroy the balloon. */  
 
 //Homework #4//
 ![alt text](Recordings\movie_003.mp4)
+
+//Homework #5//
+![alt text](Recordings\movie_009.mp4)
+/* Note: for homework 5 I made a custom input where I assign the F key to activate an animation called 
+ dodgebackward on the input binding. Then, I modify both the StarterAssetsInputs and ThirdPersonController scripts to add the input in code. */
 
 
 
