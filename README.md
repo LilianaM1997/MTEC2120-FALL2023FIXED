@@ -18,6 +18,10 @@
 /* Note: for homework 5 I made a custom input where I assign the F key to activate an animation called 
  dodgebackward on the input binding. Then, I modify both the StarterAssetsInputs and ThirdPersonController scripts to add the input in code. */
 
+ //Homework #6//
+![alt text](Recordings/movie_010.mp4)
+/* Note: for homework 6, 2 animations (Dance Robot and Dance HipHop) were used and assigned to keys 2 and 3 respectively. Using the statecontroller script and tweaked the thirdpersoncontroller script to include IDs for both animations. Both are set as triggers so that the player can transition one dance to another by pressing the keys anytime.*/
+
 
 
  

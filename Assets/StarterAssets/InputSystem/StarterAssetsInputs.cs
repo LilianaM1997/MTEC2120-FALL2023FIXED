@@ -14,8 +14,10 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool dodgebackward;
+		public bool dancerobot;
+        public bool dancehiphop;
 
-		[Header("Movement Settings")]
+        [Header("Movement Settings")]
 		public bool analogMovement;
 
 		[Header("Mouse Cursor Settings")]
@@ -45,6 +47,28 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+        public void OnDanceRobot(InputValue value)
+        {
+            DanceRobotInput(value.isPressed);
+        }
+
+        private void DanceRobotInput(bool isPressed)
+        {
+            dancerobot = isPressed;
+        }
+
+
+        public void OnDanceHipHop(InputValue value)
+        {
+            DanceHipHopInput(value.isPressed);
+        }
+
+        private void DanceHipHopInput(bool isPressed)
+        {
+            dancehiphop = isPressed;
+        }
+
 
         public void OnDodgeBackward(InputValue value)
         {

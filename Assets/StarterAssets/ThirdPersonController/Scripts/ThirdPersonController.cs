@@ -98,6 +98,8 @@ namespace StarterAssets
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
         private int _animIDDodgeBackward;
+        private int _animIDDanceRobot;
+        private int _animIDDanceHipHop;
 
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
@@ -161,6 +163,25 @@ namespace StarterAssets
             GroundedCheck();
             Move();
             DodgeBackward();
+            DanceRobot();
+            DanceHipHop();
+        }
+
+
+        private void DanceHipHop()
+        {
+            if (_hasAnimator)
+            {
+                _animator.SetBool(_animIDDanceHipHop, _input.dancehiphop);
+            }
+        }
+
+        private void DanceRobot()
+        {
+            if (_hasAnimator)
+            {
+                _animator.SetBool(_animIDDanceRobot, _input.dancerobot);
+            }
         }
 
         private void DodgeBackward()
@@ -184,6 +205,8 @@ namespace StarterAssets
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
             _animIDDodgeBackward = Animator.StringToHash("DodgeBackward");
+            _animIDDanceRobot = Animator.StringToHash("DanceRobot");
+            _animIDDanceHipHop = Animator.StringToHash("DanceHipHop");
         }
 
         private void GroundedCheck()
