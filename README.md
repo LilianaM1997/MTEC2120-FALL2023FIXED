@@ -22,6 +22,10 @@
 ![alt text](Recordings/movie_010.mp4)
 /* Note: for homework 6, 2 animations (Dance Robot and Dance HipHop) were used and assigned to keys 2 and 3 respectively. Using the statecontroller script and tweaked the thirdpersoncontroller script to include IDs for both animations. Both are set as triggers so that the player can transition one dance to another by pressing the keys anytime.*/
 
+//Homework #7//
+![alt text](Recordings/movie_016.mp4)
+
+
 
 
  
