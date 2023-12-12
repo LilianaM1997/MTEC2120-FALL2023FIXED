@@ -7,59 +7,71 @@ public class Interactor : MonoBehaviour
     [SerializeField] float maxInteractingDistance = 10;
     [SerializeField] float interactingRadius = 1;
 
-	LayerMask layerMask;
-	Transform cameraTransform;
+    LayerMask layerMask;
+    //Transform cameraTransform;
     InputAction interactAction;
-    
+
     //For Gizmo
     Vector3 origin;
-	Vector3 direction;
+    Vector3 direction;
     Vector3 hitPosition;
     float hitDistance;
 
-    [HideInInspector] public Interactable interactableTarget;
+    public Interactable interactableTarget;
 
     // Start is called before the first frame update
     void Start()
     {
-		cameraTransform = Camera.main.transform;
-		layerMask = LayerMask.GetMask("Interactable","Enemy","NPC");
+        //cameraTransform = Camera.main.transform;
+        layerMask = LayerMask.GetMask("Interactable", "Enemy", "NPC");
 
-		interactAction = GetComponent<PlayerInput>().actions["Interact"];
-		interactAction.performed += Interact;
+        interactAction = GetComponent<PlayerInput>().actions["Interact"];
+        interactAction.performed += Interact;
     }
-	// Update is called once per frame
-	void Update()
+    // Update is called once per frame
+    void Update()
     {
-		direction = cameraTransform.forward;
-		origin = cameraTransform.position;
-		RaycastHit hit;
+        direction = transform.TransformDirection(Vector3.forward);
+        origin = transform.position + Vector3.up * 0.5f;
+        RaycastHit hit;
 
-        if (Physics.SphereCast(origin, interactingRadius, direction, out hit, maxInteractingDistance, layerMask))
+        //if (Physics.SphereCast(origin, interactingRadius, direction, out hit, maxInteractingDistance, layerMask))
+        if (Physics.Raycast(origin, direction, out hit, maxInteractingDistance, layerMask))
         {
+
+            Debug.Log("Raycast hit.");
             hitPosition = hit.point;
             hitDistance = hit.distance;
-            if(hit.transform.TryGetComponent<Interactable>(out interactableTarget))
+            if (hit.transform.TryGetComponent<Interactable>(out interactableTarget))
             {
+                Debug.Log("TargetOn.");
+
                 interactableTarget.TargetOn();
             }
         }
-        else if (interactableTarget)
+        else
         {
-            interactableTarget.TargetOff();
-            interactableTarget = null;
+            if (interactableTarget)
+            {
+                interactableTarget.TargetOff();
+                interactableTarget = null;
+            }
+
         }
     }
     private void Interact(InputAction.CallbackContext obj)
     {
 
+        //Debug.Log("Interact was called. " + interactableTarget.name);
         if (interactableTarget != null)
         {
-            Debug.Log("Interact was called. " + interactableTarget.name);
-
-            if (Vector3.Distance(transform.position,interactableTarget.transform.position)<= interactableTarget.interactionDistance)
+            if (Vector3.Distance(transform.position, interactableTarget.transform.position) <= interactableTarget.interactionDistance)
             {
+                // From this
                 interactableTarget.Interact();
+
+                // To this
+                interactableTarget.Interact(this.gameObject);
             }
         }
         else
@@ -68,13 +80,13 @@ public class Interactor : MonoBehaviour
         }
     }
     private void OnDrawGizmos()
-	{
-		Gizmos.color = Color.green;
-		Gizmos.DrawLine(origin,origin+direction * hitDistance);
-		Gizmos.DrawWireSphere(hitPosition, interactingRadius);
-	}
-	private void OnDestroy()
-	{
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(origin, origin + direction * hitDistance);
+        Gizmos.DrawWireSphere(hitPosition, interactingRadius);
+    }
+    private void OnDestroy()
+    {
         interactAction.performed -= Interact;
     }
 }
