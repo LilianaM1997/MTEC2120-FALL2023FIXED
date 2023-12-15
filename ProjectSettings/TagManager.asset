@@ -11,6 +11,8 @@ TagManager:
   - clickLayer
   - Canvas
   - WayPoints
+  - Dragon
+  - ScoreText
   layers:
   - Default
   - TransparentFX

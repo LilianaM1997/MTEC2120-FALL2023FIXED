@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
+    public int damageAmount = 20;
 
-
-    private void OnCollisionEnter(Collision other)
+   
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Bullet hit " + other.gameObject.name);
-        Destroy(gameObject, 2f);
+        Destroy(transform.GetComponent<Rigidbody>());
+        if (other.tag == "Dragon")
+        {
+            transform.parent = other.transform;
+            other.GetComponent<Dragon>().TakeDamage(damageAmount);
+        }
     }
 
  
